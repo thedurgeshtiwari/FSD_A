@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Data</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+        strong {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Data Received!</h2>
+        <p>This page successfully received the following details:</p>
+        <div id="data-container">
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('user_name');
+        const language = urlParams.get('user_language');
+        const address = urlParams.get('user_address');
+        const dataContainer = document.getElementById('data-container');
+        dataContainer.innerHTML = `
+            <p><strong>Name:</strong> ${name || 'Not provided'}</p>
+            <p><strong>Language:</strong> ${language || 'Not provided'}</p>
+            <p><strong>Address:</strong> ${address || 'Not provided'}</p>
+        `;
+    </script>
+
+</body>
+</html>
